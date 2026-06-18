@@ -19,8 +19,8 @@ local function hover(args)
 
     local _, win = vim.lsp.util.open_floating_preview(
         vim.split(commit_result.stdout, "\n"), "git", {
-            width = 72,
-            height = 18,
+            width = 78,
+            height = 20,
             title = args.args:sub(1, 7),
             title_pos = "left"
         }
