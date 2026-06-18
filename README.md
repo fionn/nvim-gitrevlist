@@ -14,4 +14,4 @@ This plugin provides:
 * syntax highlighting,
 * filetype detection for `.git-blame-ignore-revs` files,
 * commenting and uncommenting with default mappings `gc` and `gcc`,
-* showing the commit on "hover" (`K`).
+* showing the commit in a floating window on "hover" (`K`).
