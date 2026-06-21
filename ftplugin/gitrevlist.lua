@@ -13,9 +13,9 @@ local function hover(args)
         return
     end
 
+    local cmd = {"git", "show", "--no-color", args.args}
     local cwd = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
-    local commit_result = vim.system({"git", "show", args.args},
-                                     {cwd = cwd, text = true}):wait()
+    local commit_result = vim.system(cmd, {cwd = cwd, text = true}):wait()
     if commit_result.code ~= 0 then
         vim.notify("Not a revision: " .. args.args, vim.log.levels.DEBUG)
         return
