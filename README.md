@@ -15,3 +15,9 @@ This plugin provides:
 * filetype detection for `.git-blame-ignore-revs` files,
 * commenting and uncommenting with default mappings `gc` and `gcc`,
 * showing the commit in a floating window on "hover" (`K`).
+
+## Demo
+
+<div align="center">
+    <a href="https://asciinema.org/a/1257906"><img width="600" alt="Example of using fionn/nvim-gitrevlist" src="https://github.com/user-attachments/assets/f0767c43-04dc-4122-86d3-72a0c2f8daca"></a>
+</div>
