@@ -8,10 +8,8 @@ vim.opt_local.commentstring = "# %s"
 ---@param args vim.api.keyset.create_user_command.command_args
 local function hover(args)
     local cwd = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
-    local commit_proc = vim.system({"git", "show", args.args},
-                                   {cwd = cwd, text = true})
-
-    local commit_result = commit_proc:wait()
+    local commit_result = vim.system({"git", "show", args.args},
+                                     {cwd = cwd, text = true}):wait()
     if commit_result.code ~= 0 then
         vim.notify("Not a revision: " .. args.args, vim.log.levels.DEBUG)
         return
