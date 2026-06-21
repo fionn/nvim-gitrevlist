@@ -7,6 +7,12 @@ vim.opt_local.commentstring = "# %s"
 
 ---@param args vim.api.keyset.create_user_command.command_args
 local function hover(args)
+    if not string.match(args.args, "%x+")
+       or not (string.len(args.args) == 40 or string.len(args.args) == 64) then
+        vim.notify("No information available", vim.log.levels.DEBUG)
+        return
+    end
+
     local cwd = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
     local commit_result = vim.system({"git", "show", args.args},
                                      {cwd = cwd, text = true}):wait()
