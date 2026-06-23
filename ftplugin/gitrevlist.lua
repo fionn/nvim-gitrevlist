@@ -40,4 +40,10 @@ vim.api.nvim_create_user_command(ex_command, hover,
                                  {desc = "git rev-list keywordprg", nargs = 1})
 vim.opt_local.keywordprg = ":" .. ex_command
 
+vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "")
+    .. "\n setl comments<"
+    .. "\n setl commentstring<"
+    .. "\n delcommand " .. ex_command
+    .. "\n setl keywordprg<"
+
 vim.b.did_ftplugin = 1
