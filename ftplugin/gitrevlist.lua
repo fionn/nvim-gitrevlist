@@ -6,7 +6,7 @@ vim.opt_local.comments = ":#"
 vim.opt_local.commentstring = "# %s"
 
 ---@param args vim.api.keyset.create_user_command.command_args
-local function hover(args)
+local function git_show(args)
     if not string.match(args.args, "%x+")
        or not (string.len(args.args) == 40 or string.len(args.args) == 64) then
         vim.notify("No information available", vim.log.levels.DEBUG)
@@ -35,8 +35,8 @@ local function hover(args)
     end
 end
 
-local ex_command = "Keywordprg"
-vim.api.nvim_create_user_command(ex_command, hover,
+local ex_command = "GitShow"
+vim.api.nvim_create_user_command(ex_command, git_show,
                                  {desc = "git rev-list keywordprg", nargs = 1})
 vim.opt_local.keywordprg = ":" .. ex_command
 
