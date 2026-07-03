@@ -1,3 +1,9 @@
+" Vim filetype plugin file
+" Language:     Git revision list
+" Author:       Fionn Fitzmaurice (github.com/fionn)
+" Maintainer:   Fionn Fitzmaurice (github.com/fionn)
+" License:      Vim & Apache 2.0
+
 if exists("b:did_ftplugin")
     finish
 endif
