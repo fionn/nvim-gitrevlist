@@ -9,19 +9,7 @@ The default output of `git rev-list` will match this. It is also suitable as inp
 ## Features
 
 This plugin provides:
+* filetype detection for `.git-blame-ignore-revs` files,
 * syntax highlighting,
 * commenting and uncommenting with default mappings `gc` and `gcc`,
 * showing the commit on "hover" (`K`).
-
-# Usage
-
-1. Install this plugin.
-2. Assign the filetype to the appropriate files, e.g.
-   ```lua
-   vim.filetype.add {
-       extension = {
-           ["git-blame-ignore-revs"] = "gitrevlist"
-       }
-   }
-   ```
-   for Neovim.
