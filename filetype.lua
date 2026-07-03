@@ -1,5 +1,5 @@
 vim.filetype.add {
-    extension = {
-        ["git-blame-ignore-revs"] = "gitrevlist"
+    filename = {
+        [".git-blame-ignore-revs"] = "gitrevlist"
     }
 }
