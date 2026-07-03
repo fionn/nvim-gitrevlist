@@ -1,3 +1,9 @@
+" Vim syntax file
+" Language:     Git revision list
+" Author:       Fionn Fitzmaurice (github.com/fionn)
+" Maintainer:   Fionn Fitzmaurice (github.com/fionn)
+" License:      Vim & Apache 2.0
+
 if exists("b:current_syntax")
     finish
 endif
