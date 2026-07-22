@@ -13,7 +13,7 @@ local function git_show(args)
         return
     end
 
-    local cmd = {"git", "show", "--no-color", args.args}
+    local cmd = {"git", "show", "--show-signature", "--no-color", args.args}
     local cwd = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
     local commit_result = vim.system(cmd, {cwd = cwd, text = true}):wait()
     if commit_result.code ~= 0 then
