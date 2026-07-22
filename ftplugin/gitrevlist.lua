@@ -7,7 +7,7 @@ vim.opt_local.commentstring = "# %s"
 
 ---@param args vim.api.keyset.create_user_command.command_args
 local function git_show(args)
-    if not string.match(args.args, "%x+")
+    if not string.match(args.args, "^%x+$")
        or not (string.len(args.args) == 40 or string.len(args.args) == 64) then
         vim.notify("No information available", vim.log.levels.DEBUG)
         return
