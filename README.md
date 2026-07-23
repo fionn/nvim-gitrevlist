@@ -11,9 +11,9 @@ The default output of `git rev-list` will match this. It is also suitable as inp
 ## Features
 
 This plugin provides:
-* syntax highlighting,
-* filetype detection for `.git-blame-ignore-revs` files,
-* commenting and uncommenting with default mappings `gc` and `gcc`,
+* syntax highlighting (upstreamed in https://github.com/vim/vim/pull/20702, https://github.com/neovim/neovim/pull/40912),
+* filetype detection for `.git-blame-ignore-revs` files (upstreamed in https://github.com/vim/vim/pull/20702, https://github.com/neovim/neovim/pull/40912),
+* commenting and uncommenting with default mappings `gc` and `gcc` (upstreamed in https://github.com/vim/vim/pull/20702, https://github.com/neovim/neovim/pull/40912),
 * showing the commit in a floating window on "hover" (`K`).
 
 ## Demo
