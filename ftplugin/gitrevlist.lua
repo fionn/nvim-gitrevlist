@@ -31,8 +31,13 @@ local function git_show(args)
         "git", "show", "--show-signature", "--no-color",
         "--end-of-options", args.args, "--"
     }
-    local cwd = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
-    local commit_result = vim.system(cmd, {cwd = cwd, text = true}):wait()
+    ---@type vim.SystemOpts
+    local system_opts = {
+        cwd = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
+        text = true,
+        timeout = 5000
+    }
+    local commit_result = vim.system(cmd, system_opts):wait()
     if commit_result.code ~= 0 then
         vim.notify(commit_result.stderr:gsub("^%s*(.-)%s*$", "%1"),
                    vim.log.levels.ERROR)
