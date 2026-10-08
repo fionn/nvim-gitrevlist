@@ -13,6 +13,20 @@ local function git_show(args)
         return
     end
 
+    if vim.opt_local.syntax:get() == "gitrevlist" then
+        ---@type vim._inspector.Filter
+        local filter = {
+            extmarks = false,
+            semantic_tokens = false,
+            syntax = true,treesitter = false
+        }
+        local _, syntax = next(vim.inspect_pos(nil, nil, nil, filter).syntax)
+        if syntax and syntax.hl_group ~= "gitrevlistHash" then
+            vim.notify("No information available", vim.log.levels.DEBUG)
+            return
+        end
+    end
+
     local cmd = {
         "git", "show", "--show-signature", "--no-color",
         "--end-of-options", args.args, "--"
