@@ -37,24 +37,27 @@ local function git_show(args)
         text = true,
         timeout = 5000
     }
-    local commit_result = vim.system(cmd, system_opts):wait()
-    if commit_result.code ~= 0 then
-        vim.notify(commit_result.stderr:gsub("^%s*(.-)%s*$", "%1"),
-                   vim.log.levels.ERROR)
-        return
-    end
+    vim.system(cmd, system_opts, function(out)
+        vim.schedule(function()
+            if out.code ~= 0 then
+                vim.notify(out.stderr:gsub("^%s*(.-)%s*$", "%1"),
+                           vim.log.levels.ERROR)
+                return
+            end
 
-    local _, win = vim.lsp.util.open_floating_preview(
-        vim.split(commit_result.stdout, "\n"), "git", {
-            width = 78,
-            height = 20,
-            title = args.args:sub(1, 7),
-            title_pos = "left"
-        }
-    )
-    if win == 0 then
-        vim.notify("Failed to open commit preview", vim.log.levels.ERROR)
-    end
+            local _, win = vim.lsp.util.open_floating_preview(
+                vim.split(out.stdout, "\n"), "git", {
+                    width = 78,
+                    height = 20,
+                    title = args.args:sub(1, 7),
+                    title_pos = "left"
+                }
+            )
+            if win == 0 then
+                vim.notify("Failed to open commit preview", vim.log.levels.ERROR)
+            end
+        end)
+    end)
 end
 
 local ex_command = "GitShow"
